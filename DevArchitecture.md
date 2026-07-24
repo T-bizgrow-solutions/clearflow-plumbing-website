@@ -544,6 +544,7 @@ Run through this at the start of every session:
 9. If SEO / AEO / GEO work is in scope — read Section 18; create or read `/implementation/SEO_AEO_GEO_PLAN.md` before building
 10. If articles / insights work is in scope — read Section 20; create or read `/implementation/ARTICLES_PLAN.md` before building
 11. At the end of route, content, SEO, metadata, structured-data, or deployment work — run the final sitemap freshness gate in Section 19
+12. If Bing XML verification is needed — copy `BingSiteAuth.xml` from `~/CODING - TRW /_shared/seo/` (see Section 18 Stage 9) into `public/`; never invent a new Bing user code
 
 ---
 
@@ -674,14 +675,26 @@ Run after the canonical domain is live, sitemap is deployed, and `robots.txt` po
 
 #### Bing Webmaster Tools
 
-1. **Verify site** — options:
+1. **Verify site** — options (prefer in order):
    - Import from Google Search Console (fastest if GSC is already verified)
-   - XML file in `public/` (e.g. `BingSiteAuth.xml`)
+   - XML file in `public/BingSiteAuth.xml` — **required agent step** when using file verification (see shared asset rule below)
    - Meta tag in `<head>` (`msvalidate.01`)
    - DNS CNAME verification
 2. **Submit sitemap** — same canonical sitemap URL as GSC.
 3. **Configure** — set geo/market if relevant; review URL inspection for key pages.
 4. **Monitor** — Indexing, crawl errors, and search performance.
+
+##### Shared Bing auth file (BizGrow)
+
+> **Agent instruction:** For Bing XML verification, do **not** invent a new auth code. Obtain `BingSiteAuth.xml` as follows:
+>
+> 1. **Preferred:** copy from the workspace shared store:  
+>    `~/CODING - TRW /_shared/seo/BingSiteAuth.xml`  
+>    → place at `<project>/public/BingSiteAuth.xml`
+> 2. **Fallback:** if the shared file is missing, copy from any sibling BizGrow repo’s `public/BingSiteAuth.xml` (same Bing account user code), then restore the shared store copy so future projects can use step 1.
+> 3. Commit the project `public/BingSiteAuth.xml`. After production deploy, complete Bing property verification + sitemap submit (user dashboard unless access is granted).
+>
+> See `~/CODING - TRW /_shared/seo/README.md` for notes.
 
 #### Agent vs user responsibilities
 
@@ -775,6 +788,7 @@ Run the gate after:
 
 - Preferred verification: import from Google Search Console after GSC is verified.
 - Acceptable alternatives: `BingSiteAuth.xml`, `msvalidate.01` meta tag, or DNS CNAME.
+- **`BingSiteAuth.xml` source of truth:** copy from `~/CODING - TRW /_shared/seo/BingSiteAuth.xml` into `public/BingSiteAuth.xml`. If the shared file is missing, copy from a sibling repo’s `public/BingSiteAuth.xml`, then restore the shared store. Never invent a new Bing user code.
 - Submit the same canonical sitemap URL used for Google.
 - Record verification method, submission date, crawl/indexing issues, and owner in `IMPLEMENTATION_STATUS.md`.
 

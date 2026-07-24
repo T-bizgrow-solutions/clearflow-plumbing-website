@@ -22,7 +22,7 @@ approved_by_user: true
 | 3 | Design system / tokens | `DESIGN_SYSTEM_PLAN.md` | complete |
 | 4 | Accessibility pass | `ACCESSIBILITY_PLAN.md` | complete (baseline) |
 | 5 | SEO / AEO / GEO | `SEO_AEO_GEO_PLAN.md` | complete (content + JSON-LD) |
-| 6 | Sitemap + GSC + Bing | `SITEMAP_SEARCH_CONSOLE_BING_PLAN.md` | sitemap done — GSC/Bing manual |
+| 6 | Sitemap + GSC + Bing | `SITEMAP_SEARCH_CONSOLE_BING_PLAN.md` | sitemap + BingSiteAuth done — GSC/Bing dashboard manual |
 | 7 | Vercel deploy + env | `VERCEL_DEPLOYMENT_PLAN.md` | project live — add n8n/Sentry secrets |
 | 8 | Sentry | `SENTRY_GUIDE.md` | SDK wired — needs `VITE_SENTRY_DSN` |
 | 9 | GitHub issues + labels | `GITHUB_ISSUES_GUIDE.md` | labels synced |
@@ -52,6 +52,7 @@ approved_by_user: true
 - [ ] Import repo to Vercel (or approve CLI link) and deploy
 - [ ] Push latest commits to GitHub so CI runs
 - [ ] Choose GSC/Bing verification method and provide tokens if meta/file
+- [ ] After deploy: confirm `https://<host>/BingSiteAuth.xml` loads; add property + submit sitemap in Bing Webmaster Tools
 - [ ] Confirm location list + article topics/author with client
 - [ ] Confirm Josh photo + project mapping; reviews replacement for Elfsight
 - [ ] DNS cutover for `clearflowpm.com` when ready
