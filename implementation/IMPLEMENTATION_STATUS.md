@@ -1,41 +1,69 @@
+---
+name: Implementation status
+overview: Onboarding scope and plan tracker for ClearFlow Plumbing Website.
+status: in-progress
+approved_by_user: true
+---
+
 # Implementation status — ClearFlow Plumbing Website
 
 **Onboarding date:** 2026-07-22  
-**Session:** Initial site migration and rebuild  
-**Canonical domain:** https://clearflowpm.com (target)
+**Scope confirmed:** 2026-07-25 — all relevant items approved  
+**Build started:** 2026-07-25  
+**Canonical domain:** https://clearflowpm.com (target)  
+**GitHub:** https://github.com/T-bizgrow-solutions/clearflow-plumbing-website
 
-## Current phase
+## Scope tracker
 
-| Item | Status | Notes |
-|------|--------|-------|
-| Site migration plan | in-progress | Multi-page routing added (services + projects) |
-| Services pages | complete | `/services` index + 7 detail pages |
-| Projects page | complete | `/projects` gallery page |
-| Articles route | deferred | DevArchitecture phase |
-| Location pages | deferred | DevArchitecture phase |
-| Contact form → API/webhook | planned | UI built; submission stubbed |
-| SEO / AEO / GEO | planned | Basic meta in place; full plan not started |
-| Supabase backend | not started | |
-| Sentry | not started | |
-| n8n integration | not started | |
-| GitHub label sync | not started | Scripts placeholder in package.json |
-| Linear project | not started | Run `npm run linear:create-project` when ready |
-| Vercel deployment | not started | `vercel.json` configured |
+| # | Item | Plan file | Status |
+|---|------|-----------|--------|
+| 1 | Public marketing site | `SITE_MIGRATION_PLAN.md` | complete |
+| 2 | Contact + GDPR + n8n + API | `N8N_WEBHOOK_PLAN.md` | code complete — needs `N8N_WEBHOOK_URL` in Vercel |
+| 3 | Design system / tokens | `DESIGN_SYSTEM_PLAN.md` | complete |
+| 4 | Accessibility pass | `ACCESSIBILITY_PLAN.md` | complete (baseline) |
+| 5 | SEO / AEO / GEO | `SEO_AEO_GEO_PLAN.md` | complete (content + JSON-LD) |
+| 6 | Sitemap + GSC + Bing | `SITEMAP_SEARCH_CONSOLE_BING_PLAN.md` | sitemap done — GSC/Bing manual |
+| 7 | Vercel deploy + env | `VERCEL_DEPLOYMENT_PLAN.md` | ready — needs project link + secrets |
+| 8 | Sentry | `SENTRY_GUIDE.md` | SDK wired — needs `VITE_SENTRY_DSN` |
+| 9 | GitHub issues + labels | `GITHUB_ISSUES_GUIDE.md` | labels synced |
+| 10 | Linear project | `LINEAR_PROJECT_PLAN.md` | script ready — needs `LINEAR_API_KEY` |
+| 11 | GitHub Actions CI | `GITHUB_ACTIONS_CI_PLAN.md` | workflow added |
+| 12 | Articles / insights | `ARTICLES_PLAN.md` | complete (3 posts) |
+| 13 | Location pages | `LOCATION_PAGES_PLAN.md` | complete (6 areas) |
 
-## Decisions confirmed
+## Shipped in this build
 
-- **Stack:** Vite + React + TypeScript + Tailwind (matches DevArchitecture Vite SPA conventions)
-- **Scope (session 1):** Pull in existing site content and re-develop marketing homepage only
-- **Evolution:** Further features gated behind DevArchitecture onboarding checklist
+- Contact form: first/last name, GDPR, Zod + RHF, `POST /api/submit-contact`
+- Design tokens doc + CSS variables
+- FAQ accordion (DOM-preserved) + areas served
+- JSON-LD (Organization, LocalBusiness, FAQ, Service, Article, locations)
+- `/insights` + 3 articles; `/locations` + 6 area pages
+- Data-driven sitemap (21 URLs) + `public/llms.txt`
+- Sentry init (DSN-gated)
+- GitHub label sync (26 labels)
+- CI workflow (`.github/workflows/ci.yml`)
+- Deploy notes in `implementation/DEPLOY_NOTES.md`
 
-## Manual follow-ups
+## Manual follow-ups (need you)
 
-- [ ] Complete DevArchitecture Section 0 feature checklist (user Y/N)
-- [ ] Confirm Josh Nehme photo is correct representative image
-- [ ] Confirm project photo mapping matches client expectations
-- [ ] Decide on reviews/testimonials replacement for Elfsight widget
-- [ ] Production deploy to Vercel when approved
+- [ ] Set `N8N_WEBHOOK_URL` (+ optional `N8N_WEBHOOK_SECRET`) in Vercel
+- [ ] Set `VITE_SENTRY_DSN` in Vercel; create Sentry → Linear alert after Linear project exists
+- [ ] Add `LINEAR_API_KEY` to `.env.local` and run `npm run linear:create-project`
+- [ ] Import repo to Vercel (or approve CLI link) and deploy
+- [ ] Push latest commits to GitHub so CI runs
+- [ ] Choose GSC/Bing verification method and provide tokens if meta/file
+- [ ] Confirm location list + article topics/author with client
+- [ ] Confirm Josh photo + project mapping; reviews replacement for Elfsight
+- [ ] DNS cutover for `clearflowpm.com` when ready
 
 ## Linear project
 
-_Not created yet._ Add row to DevArchitecture Section 9 when `npm run linear:create-project` is run.
+_Not created yet — awaiting API key._
+
+## Verification
+
+- `npm run typecheck` — pass
+- `npm run lint` — pass
+- `npm run build` — pass
+- `npm run generate:sitemap` — 21 URLs
+- `npm run sync:labels` — synced

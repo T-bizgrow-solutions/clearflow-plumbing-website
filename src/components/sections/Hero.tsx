@@ -145,6 +145,9 @@ export function Hero() {
         </div>
       </div>
 
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Slide {activeSlide + 1} of {heroSlides.length}: {slide.title}. {slide.subtitle}
+      </div>
       <span className="sr-only">{slide.imageAlt}</span>
     </section>
   );

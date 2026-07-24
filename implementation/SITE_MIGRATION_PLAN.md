@@ -1,7 +1,7 @@
 ---
 name: Site migration and rebuild
 overview: Migrate clearflowpm.com from WordPress/Elementor into a Vite + React + TypeScript marketing site aligned with DevArchitecture conventions.
-status: in-progress
+status: complete
 approved_by_user: true
 todos:
   - id: scaffold-vite
@@ -12,6 +12,9 @@ todos:
     status: completed
   - id: build-sections
     content: Rebuild homepage sections (hero, about, director, services, projects, why choose us, contact)
+    status: completed
+  - id: multi-page-routes
+    content: Add /services, service detail pages, and /projects gallery
     status: completed
   - id: wire-contact-form
     content: Wire contact form to Vercel API proxy + n8n webhook with GDPR consent
@@ -28,68 +31,48 @@ todos:
 
 ## Goal
 
-Replace the client's WordPress/Elementor site at https://clearflowpm.com with a modern Vite SPA that preserves existing content and brand identity, while establishing the codebase structure required for subsequent DevArchitecture features (Supabase, booking, Sentry, n8n, SEO, etc.).
+Replace the client's WordPress/Elementor site at https://clearflowpm.com with a modern Vite SPA that preserves existing content and brand identity, while establishing the codebase structure required for subsequent DevArchitecture features.
 
 ## Current state
 
-- Live site: WordPress + Elementor + Gravity Forms + Elfsight reviews widget
-- New repo: `clearflow-plumbing-website` — Vite + React 18 + TypeScript + Tailwind
-- Single-page marketing site with sections mirroring the original homepage
-- Contact form is UI-only (local preview state) — not yet connected to backend/webhook
-- Assets pulled from live site into `/public`
+- Repo: `clearflow-plumbing-website` on GitHub (`T-bizgrow-solutions/clearflow-plumbing-website`)
+- Vite + React 18 + TypeScript + Tailwind marketing site with multi-page routes
+- Contact form still stubbed — ownership moved to `N8N_WEBHOOK_PLAN.md`
+- SEO/design/a11y follow-ons moved to dedicated plans (see `IMPLEMENTATION_STATUS.md`)
 
 ## What we are building
 
-### Phase 1 (this session) — complete
-- Vite project scaffold matching BizGrow repo conventions
-- Content single source of truth in `src/data/content.ts`
-- Responsive sections: Navbar, Hero (carousel), About, Director, Services, Projects, Why choose us, Contact, Footer
-- Brand tokens: ClearFlow blue `#009fe3`, green `#7ac143`, fonts Montserrat/Raleway/Sora
-- `vercel.json` SPA rewrites + API route placeholder at `/api/`
-- `.env.example` documented for future integrations
+### Phase 1 — complete
 
-### Phase 2 (onboarding — pending user Y/N)
-- Feature checklist per DevArchitecture Section 0
-- Individual implementation plans for each approved item
+- Vite scaffold, content SSOT, homepage sections, brand tokens, `vercel.json`, multi-page services + projects
 
-## Files to create
+### Phase 2 — tracked elsewhere
 
-| File | Purpose |
-|------|---------|
-| `implementation/SITE_MIGRATION_PLAN.md` | This plan |
-| `implementation/IMPLEMENTATION_STATUS.md` | Session and phase tracking |
-| `src/data/content.ts` | All marketing copy |
-| `src/components/sections/*` | Page sections |
-| `api/submit.ts` | Future Vercel serverless contact handler |
+Remaining migration todos are implemented under dedicated plans so each workstream can be approved and verified independently.
 
-## Files to modify
+| Remaining concern | Plan file |
+|-------------------|-----------|
+| Contact + GDPR + n8n | `N8N_WEBHOOK_PLAN.md` |
+| Design tokens | `DESIGN_SYSTEM_PLAN.md` |
+| Accessibility | `ACCESSIBILITY_PLAN.md` |
+| SEO / AEO / GEO | `SEO_AEO_GEO_PLAN.md` |
+| Sitemap / GSC / Bing | `SITEMAP_SEARCH_CONSOLE_BING_PLAN.md` |
 
-| File | Changes |
-|------|---------|
-| `src/App.tsx` | Route shell; extend for `/insights`, legal pages later |
-| `public/robots.txt` | Update when canonical domain confirmed |
+## Files to create / modify
+
+See Phase 1 history and child plans. No new Phase 1 scaffolding expected.
 
 ## Environment variables required
 
-| Variable | Scope | Purpose |
-|----------|-------|---------|
-| `VITE_SITE_URL` | Build time | Canonical site URL |
-| `N8N_WEBHOOK_URL` | Server only | Contact form webhook (phase 2) |
-| `N8N_WEBHOOK_SECRET` | Server only | Webhook auth header (phase 2) |
+See `.env.example` and child plans.
 
 ## Test plan
 
-1. `npm run dev` — verify all sections render, nav anchors scroll correctly
-2. `npm run build` — production build succeeds
-3. Compare section content against https://clearflowpm.com
-4. Mobile nav opens/closes; focus states visible
-5. `prefers-reduced-motion` disables hero carousel auto-advance
+1. `npm run dev` — home, services, projects, 404
+2. `npm run build` — succeeds
+3. Content spot-check vs https://clearflowpm.com
 
-## Out of scope (this phase)
+## Out of scope
 
-- Supabase auth and booking backend
-- Sentry integration
-- n8n webhook wiring
-- Google reCAPTCHA replacement
-- Elfsight reviews widget (needs approved alternative)
-- DNS cutover and production deployment
+- Supabase auth/booking (explicitly excluded from ClearFlow scope)
+- DNS cutover (see `VERCEL_DEPLOYMENT_PLAN.md`)

@@ -9,7 +9,10 @@ import '@fontsource/raleway/latin-600.css';
 import '@fontsource/sora/latin-400.css';
 import '@fontsource/sora/latin-600.css';
 import App from './App.tsx';
+import { initSentry } from './lib/sentry';
 import './index.css';
+
+initSentry();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -1,11 +1,14 @@
 import { footer, site, socialLinks } from '../../data/content';
 
+const footerLinkClass =
+  'text-white/80 underline-offset-2 hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-surface-dark';
+
 export function Footer() {
   return (
     <footer className="bg-surface-dark text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-3 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div>
-          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wider text-brand-blue">
+          <h2 className="mb-4 font-ui text-sm font-semibold tracking-wider text-brand-blue">
             Company info
           </h2>
           <ul className="space-y-2 text-white/80">
@@ -16,17 +19,41 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wider text-brand-blue">
-            Contact
-          </h2>
+          <h2 className="mb-4 font-ui text-sm font-semibold tracking-wider text-brand-blue">Explore</h2>
+          <ul className="space-y-2">
+            <li>
+              <a href="/services" className={footerLinkClass}>
+                Services
+              </a>
+            </li>
+            <li>
+              <a href="/projects" className={footerLinkClass}>
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="/insights" className={footerLinkClass}>
+                Insights
+              </a>
+            </li>
+            <li>
+              <a href="/locations" className={footerLinkClass}>
+                Locations
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="mb-4 font-ui text-sm font-semibold tracking-wider text-brand-blue">Contact</h2>
           <ul className="space-y-2 text-white/80">
             <li>
-              <a href={site.phoneHref} className="hover:text-white hover:underline">
+              <a href={site.phoneHref} className={footerLinkClass}>
                 {site.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="hover:text-white hover:underline">
+              <a href={`mailto:${site.email}`} className={footerLinkClass}>
                 {site.email}
               </a>
             </li>
@@ -35,7 +62,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h2 className="mb-4 font-ui text-sm font-semibold uppercase tracking-wider text-brand-blue">
+          <h2 className="mb-4 font-ui text-sm font-semibold tracking-wider text-brand-blue">
             Socials &amp; accreditation
           </h2>
           <ul className="space-y-2">
@@ -45,7 +72,7 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white hover:underline"
+                  className={footerLinkClass}
                 >
                   {link.label}
                 </a>

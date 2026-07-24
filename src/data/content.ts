@@ -21,6 +21,8 @@ export const navLinks: NavLink[] = [
   { label: 'About', href: '/#about' },
   { label: 'Services', href: '/services', matchPath: '/services' },
   { label: 'Projects', href: '/projects', matchPath: '/projects' },
+  { label: 'Insights', href: '/insights', matchPath: '/insights' },
+  { label: 'Locations', href: '/locations', matchPath: '/locations' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -104,7 +106,41 @@ export const contactForm = {
   heading: 'Contact',
   intro: 'Please complete this enquiry form and we will respond within 48 hours.',
   referralOptions: ['Google', 'Instagram', 'Facebook', 'Referral', 'Other — please specify'],
+  consentLabel:
+    'I agree to ClearFlow Plumbing & Maintenance storing and using my details to respond to this enquiry.',
+  submitLabel: 'Send enquiry',
+  successTitle: 'Thanks — we will be in touch',
+  successBody: 'Your enquiry has been sent. We aim to respond within 48 hours.',
 } as const;
+
+/** Homepage FAQ — single source for Faq UI + JSON-LD FAQPage. */
+export const faqs: { question: string; answer: string }[] = [
+  {
+    question: 'What areas does ClearFlow Plumbing cover?',
+    answer:
+      'We serve the Sydney metropolitan area, Central Coast, and beyond — including the North Shore, Eastern Suburbs, and surrounding NSW sites for residential, commercial, and industrial work.',
+  },
+  {
+    question: 'Are you a licensed plumber?',
+    answer:
+      'Yes. ClearFlow Plumbing & Maintenance is a fully licensed NSW plumbing contractor (licence 379466C) and works to AS 3500 Australian Plumbing Standards on every job.',
+  },
+  {
+    question: 'Do you offer 24/7 emergency plumbing?',
+    answer:
+      'Yes. We provide prompt emergency response for urgent leaks, blockages, and after-hours failures. Call 02 5502 5602 for emergencies, or use the contact form for non-urgent bookings.',
+  },
+  {
+    question: 'How quickly will you respond to an enquiry?',
+    answer:
+      'We aim to respond to contact-form enquiries within 48 hours. Emergency call-outs are prioritised based on severity, location, and access.',
+  },
+  {
+    question: 'What plumbing services do you provide?',
+    answer:
+      'Our services include jet blasting, CCTV drain inspection, locating, construction and commercial plumbing, backflow and TMV testing, and industrial plumbing solutions.',
+  },
+];
 
 export const socialLinks = [
   {

@@ -1,4 +1,18 @@
-const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://clearflowpm.com').replace(/\/$/, '');
+function resolveSiteUrl() {
+  const fromVite =
+    typeof import.meta !== 'undefined' &&
+    import.meta.env &&
+    typeof import.meta.env.VITE_SITE_URL === 'string'
+      ? import.meta.env.VITE_SITE_URL
+      : undefined;
+  const fromProcess =
+    typeof process !== 'undefined' && typeof process.env?.VITE_SITE_URL === 'string'
+      ? process.env.VITE_SITE_URL
+      : undefined;
+  return (fromVite || fromProcess || 'https://clearflowpm.com').replace(/\/$/, '');
+}
+
+const siteUrl = resolveSiteUrl();
 
 export const defaultMeta = {
   siteName: 'ClearFlow Plumbing & Maintenance',
@@ -11,6 +25,9 @@ export type PageMetaInput = {
   path?: string;
   ogType?: 'website' | 'article';
   ogImage?: string;
+  noIndex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
 };
 
 export function absoluteUrl(path = '/') {

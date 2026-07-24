@@ -1,0 +1,164 @@
+{
+  "labels": [
+    {
+      "name": "task",
+      "color": "0e8a16",
+      "description": "Planned implementation work",
+      "category": "type"
+    },
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Something broken vs. intended behavior",
+      "category": "type"
+    },
+    {
+      "name": "qa",
+      "color": "d87600",
+      "description": "Manual or automated verification pass",
+      "category": "type"
+    },
+    {
+      "name": "blocked",
+      "color": "b60205",
+      "description": "Waiting on client input or external dependency",
+      "category": "type"
+    },
+    {
+      "name": "docs",
+      "color": "0075ca",
+      "description": "Documentation-only changes",
+      "category": "type"
+    },
+    {
+      "name": "chore",
+      "color": "6e7681",
+      "description": "Tooling, config, or housekeeping (no user-facing change)",
+      "category": "type"
+    },
+    {
+      "name": "landing-page",
+      "color": "7057ff",
+      "description": "Marketing sections, hero, CTAs, homepage UI",
+      "category": "area"
+    },
+    {
+      "name": "seo",
+      "color": "1b9e9e",
+      "description": "Meta tags, OG, sitemap, robots, JSON-LD, llms.txt",
+      "category": "area"
+    },
+    {
+      "name": "accessibility",
+      "color": "79c0ff",
+      "description": "a11y, keyboard, screen reader, motion",
+      "category": "area"
+    },
+    {
+      "name": "design",
+      "color": "e99695",
+      "description": "Visual polish, typography, design tokens",
+      "category": "area"
+    },
+    {
+      "name": "config",
+      "color": "444d56",
+      "description": "Env vars, Vercel, n8n webhook URLs",
+      "category": "area"
+    },
+    {
+      "name": "assets",
+      "color": "c5a572",
+      "description": "public/ images, favicon, fonts",
+      "category": "area"
+    },
+    {
+      "name": "infra",
+      "color": "22863a",
+      "description": "Build, deploy, CI, GitHub Actions",
+      "category": "area"
+    },
+    {
+      "name": "contact-form",
+      "color": "5319e7",
+      "description": "Contact form, validation, webhook proxy",
+      "category": "area"
+    },
+    {
+      "name": "services",
+      "color": "006b75",
+      "description": "Service index and detail pages",
+      "category": "area"
+    },
+    {
+      "name": "projects",
+      "color": "fbca04",
+      "description": "Projects gallery and case content",
+      "category": "area"
+    },
+    {
+      "name": "articles",
+      "color": "bfdadc",
+      "description": "Insights hub and article pages",
+      "category": "area"
+    },
+    {
+      "name": "locations",
+      "color": "c2e0c6",
+      "description": "Suburb and region landing pages",
+      "category": "area"
+    },
+    {
+      "name": "calendly",
+      "color": "d4af37",
+      "description": "Calendar embed, booking widget",
+      "category": "area"
+    },
+    {
+      "name": "needs-client-input",
+      "color": "f97316",
+      "description": "Blocked on stakeholder decision",
+      "category": "status"
+    },
+    {
+      "name": "in-progress",
+      "color": "fbca04",
+      "description": "Actively being worked in current session",
+      "category": "status"
+    },
+    {
+      "name": "ready-for-review",
+      "color": "2ea043",
+      "description": "Code done; QA or human review pending",
+      "category": "status"
+    },
+    {
+      "name": "duplicate",
+      "color": "cfd3d7",
+      "description": "Issue already tracked elsewhere — close with Duplicate of #N",
+      "category": "utility"
+    },
+    {
+      "name": "invalid",
+      "color": "e4e669",
+      "description": "Opened by mistake; not valid project work",
+      "category": "utility"
+    },
+    {
+      "name": "wontfix",
+      "color": "eeeeee",
+      "description": "Explicitly declined or deferred",
+      "category": "utility"
+    },
+    {
+      "name": "help needed",
+      "color": "1d76db",
+      "description": "Fix attempts failed; escalate for specialist or external help",
+      "category": "utility"
+    }
+  ],
+  "renames": [
+    { "from": "documentation", "to": "docs" }
+  ],
+  "remove": ["enhancement", "good first issue", "question"]
+}

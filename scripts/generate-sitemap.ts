@@ -1,21 +1,36 @@
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { getAllArticles, insightsIndex } from '../src/data/articles';
+import { SITE_CONTENT_LASTMOD, resolveLastmod } from '../src/data/contentDates';
+import { getAllLocations, locationsIndex } from '../src/data/locations';
+import { getAllServices, projectsPage, servicesIndex } from '../src/data/services';
 
 const siteUrl = (process.env.VITE_SITE_URL || 'https://clearflowpm.com').replace(/\/$/, '');
-const lastmod = '2026-07-22';
 
-const servicePaths = [
-  '/services',
-  '/services/jet-blasting',
-  '/services/cctv-drainage-camera',
-  '/services/locating-services',
-  '/services/construction-plumbing',
-  '/services/commercial-plumbing',
-  '/services/backflow-tmv-testing',
-  '/services/industrial-plumbing',
+type SitemapEntry = {
+  path: string;
+  lastmod: string;
+};
+
+const routes: SitemapEntry[] = [
+  { path: '/', lastmod: SITE_CONTENT_LASTMOD },
+  { path: servicesIndex.path, lastmod: SITE_CONTENT_LASTMOD },
+  ...getAllServices().map((service) => ({
+    path: service.path,
+    lastmod: SITE_CONTENT_LASTMOD,
+  })),
+  { path: projectsPage.path, lastmod: SITE_CONTENT_LASTMOD },
+  { path: insightsIndex.path, lastmod: SITE_CONTENT_LASTMOD },
+  ...getAllArticles().map((article) => ({
+    path: article.path,
+    lastmod: resolveLastmod(article.dateModified),
+  })),
+  { path: locationsIndex.path, lastmod: SITE_CONTENT_LASTMOD },
+  ...getAllLocations().map((location) => ({
+    path: location.path,
+    lastmod: SITE_CONTENT_LASTMOD,
+  })),
 ];
-
-const routes = [{ path: '/', lastmod }, { path: '/projects', lastmod }, ...servicePaths.map((path) => ({ path, lastmod }))];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

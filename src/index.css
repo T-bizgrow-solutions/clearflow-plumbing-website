@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-brand-blue: #009fe3;
+  --color-brand-blue-hover: #5487fa;
+  --color-brand-green: #7ac143;
+  --color-brand-dark: #231f20;
+  --color-brand-muted: #a1aaad;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8f9fa;
+  --color-surface-dark: #1a1a1a;
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Raleway', system-ui, sans-serif;
+  --font-ui: 'Sora', system-ui, sans-serif;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0, 159, 227, 0.15);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -36,6 +52,15 @@
   h4,
   h5 {
     @apply font-display;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 2px;
   }
 }
 
