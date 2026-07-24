@@ -23,10 +23,10 @@ approved_by_user: true
 | 4 | Accessibility pass | `ACCESSIBILITY_PLAN.md` | complete (baseline) |
 | 5 | SEO / AEO / GEO | `SEO_AEO_GEO_PLAN.md` | complete (content + JSON-LD) |
 | 6 | Sitemap + GSC + Bing | `SITEMAP_SEARCH_CONSOLE_BING_PLAN.md` | sitemap done — GSC/Bing manual |
-| 7 | Vercel deploy + env | `VERCEL_DEPLOYMENT_PLAN.md` | ready — needs project link + secrets |
+| 7 | Vercel deploy + env | `VERCEL_DEPLOYMENT_PLAN.md` | project live — add n8n/Sentry secrets |
 | 8 | Sentry | `SENTRY_GUIDE.md` | SDK wired — needs `VITE_SENTRY_DSN` |
 | 9 | GitHub issues + labels | `GITHUB_ISSUES_GUIDE.md` | labels synced |
-| 10 | Linear project | `LINEAR_PROJECT_PLAN.md` | script ready — needs `LINEAR_API_KEY` |
+| 10 | Linear project | `LINEAR_PROJECT_PLAN.md` | created |
 | 11 | GitHub Actions CI | `GITHUB_ACTIONS_CI_PLAN.md` | workflow added |
 | 12 | Articles / insights | `ARTICLES_PLAN.md` | complete (3 posts) |
 | 13 | Location pages | `LOCATION_PAGES_PLAN.md` | complete (6 areas) |
@@ -58,7 +58,19 @@ approved_by_user: true
 
 ## Linear project
 
-_Not created yet — awaiting API key._
+- **Name:** ClearFlow Plumbing Website  
+- **URL:** https://linear.app/bizgrow-solutions/project/clearflow-plumbing-website-616840438d7a  
+- **Team:** BizGrow Solutions (`BIZ`)
+
+## Vercel project
+
+- **Name:** `clearflow-plumbing-website`  
+- **Team:** tyler-9558s-projects  
+- **Project ID:** `prj_1X9KOL6bhsNa0KWab8Sz2gG7DGKF`  
+- **GitHub:** connected to `T-bizgrow-solutions/clearflow-plumbing-website`  
+- **Production domain:** https://clearflow-plumbing-website.vercel.app  
+- **Inspect:** https://vercel.com/tyler-9558s-projects/clearflow-plumbing-website  
+- **Env set:** `VITE_SITE_URL` (production)
 
 ## Verification
 
