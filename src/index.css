@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.has-water-cursor,
+  html.has-water-cursor * {
+    cursor: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply font-body text-brand-dark;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .section-pad {
+    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+}
+
+.water-cursor-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.water-cursor-droplet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.15s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 100, 160, 0.35));
+}
+
+.water-cursor-droplet svg {
+  display: block;
+  transition: transform 0.08s ease-out;
+}
+
+.water-cursor-droplet[data-pressed='true'] svg {
+  transform: scale(0.82);
+}
+
+.water-cursor-spray {
+  position: fixed;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 30% 30%, #7dd3fc, #009fe3 55%, #0369a1);
+  opacity: 0.9;
+  pointer-events: none;
+  animation: water-spray 0.6s ease-out forwards;
+  margin-left: -2px;
+  margin-top: -2px;
+}
+
+@keyframes water-spray {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--spray-x)), calc(-50% + var(--spray-y))) scale(0.35);
+    opacity: 0;
+  }
+}
